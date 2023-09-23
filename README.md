@@ -10,6 +10,7 @@ Escreva um ou dois parágrafo resumindo o objetivo do seu projeto.
 * Yasmin Torres Moreira dos Santos
 * Marco Antônio Barbosa Martins de Souza
 * Miguel Leocádio Nascimento
+* Giulia Lavinia Barbosa
 
 ## Professores responsáveis
 
