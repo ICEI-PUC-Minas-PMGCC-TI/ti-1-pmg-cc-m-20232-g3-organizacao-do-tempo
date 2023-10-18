@@ -1,0 +1,170 @@
+body{
+    margin: 0px;
+    padding: 0px;
+}
+
+#filtros{
+    display: flex;
+}
+
+#Lista_tarefas{
+    width: 25%;
+    height: 700px;
+    border: 10px;
+    border-color: black;
+    background-color: lightgrey;
+    margin: 30px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.titulo{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    padding: 10px;
+    height: 60px;
+    background-color:darkgrey;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    display: flex;
+}
+
+.titulo h3{
+    font-size: 30px;
+    margin: 0 auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.titulo a{
+    margin: auto 0;
+    width: 30px;
+    height: 30px;
+}
+
+.titulo a img{
+    width: 30px;
+    height: 30px;
+    margin: auto 0;
+}
+
+#Tarefas_vertical{
+    overflow:auto;
+    height: 90%;
+}
+
+.tarefas{
+    padding: 10px;
+    background-color: gray;
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-between;
+    min-height: 100px;
+}
+
+.conteudo h3{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 24px;
+}
+
+.conteudo p{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+}
+
+.icone{
+    justify-content: center;
+    margin: auto ;
+    margin-right: 10px;
+    align-items: center;
+}
+
+.icone img{
+    width: 30px;
+    height: 30px;
+    padding: 2px;
+    margin: 0 auto;
+}
+
+#Barra_tarefa{
+    background-color: lightgrey;
+    width: 60%;
+    height: 250px;
+    margin: 30px;
+    border: 10px;
+    border-radius: 20px;
+}
+
+#Barra_tarefa h3{
+    padding: 5px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 10px ;
+    font-size: 23px
+}
+.container{
+    display: flex;
+    justify-content: space-between;
+}
+#forward, #backward{
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    width:50px;
+    height: 165px;
+}
+
+#forward:hover, #backward:hover{
+    background-color: rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+#forward img{
+    width: 30px;
+    height: 30px;
+    
+}
+
+#backward img{
+    width: 30px;
+    height: 30px;  
+}
+
+#cards-tarefas{
+    display: flex;
+    width: 100%;
+    overflow:hidden;
+    align-items: center;
+}
+
+
+.card-corpo{
+    width: 100%;
+    height: 100%;
+}
+
+.card-tarefa{
+    height: 90%; 
+    margin-left: 10px; 
+    min-width: 165px; 
+    padding: 10px;
+    background-color: white;
+    border: 5px;
+    border-radius: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.card-titulo{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 18px;
+    ;
+}
+
+.card-texto{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    padding-top: 10px;
+}
+
+.Modal_conteudo{
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+}

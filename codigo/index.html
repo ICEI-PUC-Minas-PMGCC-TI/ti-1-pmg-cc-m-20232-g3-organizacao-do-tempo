@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock</title>
+    <link href="assets/Styles/style.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="assets/Scripts/app.js"></script>
+    <script src="assets/Scripts/botao.js"></script>
+</head>
+<body>
+    <div id="filtros">
+        <div id="Lista_tarefas">
+            <div class="titulo">
+                <h3>Tarefas</h3>
+                <a href="#"><img src="assets/imgs/criação.png" alt="icone de adição de tarefas"></a>
+            </div>
+            
+            <div id="Tarefas_vertical"></div>
+            
+        </div>
+        <div id="Barra_tarefa">
+            <h3>Importantes do mês</h3>
+            <!--<card-slider></card-slider>-->
+            <div class="container">
+                <button id="backward">
+                    <img src="assets/imgs/anterior.png">
+                </button>
+                
+                <div id="cards-tarefas"></div>
+
+                <button id="forward">
+                    <img src="assets/imgs/proximo.png">
+                </button>
+            </div>
+        </div>
+    </div>
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"></div>
+</body>
+</html> 
