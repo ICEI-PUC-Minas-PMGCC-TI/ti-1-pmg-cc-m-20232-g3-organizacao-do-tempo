@@ -20,7 +20,7 @@ readTarefas(dados => {
     ListarTarefas()
 });
 
-// função para listar na tabela os contatos que estão associados aos filtros 
+// função para listar as tarefas por ordem de data e horario  
 function ListarTarefas() {
     //Ordenar Db por Data das tarefas
     db.sort((a, b) => {
@@ -31,7 +31,6 @@ function ListarTarefas() {
     });
     console.log(db)
     // limpa a lista de contatos apresentados
-    let Cards_Tarefas = document.getElementById("cards-tarefas");
     let Tarefas_vertical = document.getElementById("Tarefas_vertical");
 
     // Popula a tabela com os registros do banco de dados
@@ -59,14 +58,6 @@ function ListarTarefas() {
         }
 
         // Inclui o contato na tabela    
-        Cards_Tarefas.innerHTML += `
-                    <div class="card-tarefa" style="Background-color:${cor}">                           
-                        <div class="card-corpo">
-                            <h5 class="card-titulo">${tarefa.nome}</h5>
-                            <p class="card-texto">${dataFormatada}<br>${tarefa.Hora_inicial} às ${tarefa.Hora_final}</p>
-                        </div>
-                    </div>`;
-
         Tarefas_vertical.innerHTML += `
                 <div class="modal fade" id="exampleModal-${tarefa.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -114,30 +105,71 @@ function ListarTarefas() {
     }
 }
 
-/* db2 = []
+var db2 = []
 readTarefas(dados => {
     db2 = dados;
-    ModalTarefa()
+    CardsTarefa()
 });
 
-function ModalTarefa(){
-    let Modal_Tarefas = document.getElementById("exampleModal");
-    
-    console.log(db2)
-    for (let index = 0; index < db2.length; index++){
-        const tarefa_atual = db2[index]
-        if(tarefa_atual.id == id){
-            Modal_Tarefas.innerHTML =`
-                
+//Função para listar as tarefas por ordem de prioridade
+function CardsTarefa(){
+    let Cards_Tarefas = document.getElementById("cards-tarefas");
+    //ordenação do DB
+    db2.sort((a, b) => {
+        const priorityA = map_priority(a.Prioridade);
+        const priorityB = map_priority(b.Prioridade);
+        if(priorityA == priorityB){
+            const DataA = new Date(`${a.Data}T${a.Hora_inicial}`);
+            const DataB = new Date(`${b.Data}T${b.Hora_inicial}`);
+
+            return DataA - DataB;
         }
+
+        return priorityA - priorityB;
+    });
+
+    console.log(db2)
+    //Loop de geração dos cards
+    for (let index = 0; index < db2.length; index++){
+        const tarefa = db2[index];
+        let cor;
+        //Pegar as Datas salvas no DB e convertar para o padrão BR
+        let data = new Date(tarefa.Data);
+        let dia = (data.getDate() + 1).toString().padStart(2, '0'); // Adicionar zero à esquerda, se necessário
+        let mes = (data.getMonth() + 1).toString().padStart(2, '0'); // Lembre-se que os meses em JavaScript são baseados em zero
+        let ano = data.getFullYear();
+        // Formatar a data no formato "DD/MM/AAAA"
+        const dataFormatada = `${dia}/${mes}/${ano}`;
+        console.log(dataFormatada)
+        if (tarefa.Prioridade == "Alta") {
+            cor = 'Red';
+        } if (tarefa.Prioridade == "Média") {
+            cor = 'Orange'
+        } if (tarefa.Prioridade == "Baixa") {
+            cor = 'Yellow'
+        }
+
+        Cards_Tarefas.innerHTML += `
+        <div class="card-tarefa" style="Background-color:${cor}">                           
+            <div class="card-corpo">
+                <h5 class="card-titulo">${tarefa.nome}</h5>
+                <p class="card-texto">${dataFormatada}<br>${tarefa.Hora_inicial} às ${tarefa.Hora_final}</p>
+            </div>
+        </div>`;
     }
     
 }
-var ids = document.getElementsByClassName("id");
-var id_text = ids.textContent;
-console.log(ids)
-let botao_modal = document.getElementById("botao_Modal");
-botao_modal.onclick = ModalTarefa(id_text)
-window.onload = ListarTarefas()*/
+
+function map_priority(priority){
+    if (priority == 'Alta') {
+        return 1;
+    }if (priority == 'Média') {
+        return 2;
+    }if (priority == 'Baixa') {
+        return 3;
+    }
+}
+window.onload = CardsTarefa()
+window.onload = ListarTarefas()
  
  
