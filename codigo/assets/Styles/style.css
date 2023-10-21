@@ -138,6 +138,7 @@ body{
 .card-corpo{
     width: 100%;
     height: 100%;
+    vertical-align: middle;
 }
 
 .card-tarefa{
@@ -165,6 +166,21 @@ body{
 
 .Modal_conteudo{
     display: flex;
-    justify-content: space-between;
+    justify-content:space-between;
     width: 90%;
+    margin: 0 auto;
+}
+
+.Modal-Comentario{
+    width: 90%;
+    margin: 0 auto;
+}
+
+.Modal-Comentario textarea{
+    width: 100%;
+    margin: 0 auto;
+}
+
+.modal-title{
+    margin-left:23px ;
 }
