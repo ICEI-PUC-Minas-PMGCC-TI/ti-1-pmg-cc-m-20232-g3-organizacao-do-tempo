@@ -176,7 +176,8 @@ body{
 .card-tarefa{
     height: 90%; 
     margin-left: 10px; 
-    min-width: 165px; 
+    min-width: 165px;
+    max-width: 165px; 
     padding: 10px;
     background-color: white;
     border: 5px;

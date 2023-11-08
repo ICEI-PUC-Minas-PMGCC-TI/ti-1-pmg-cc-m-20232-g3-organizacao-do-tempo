@@ -32,6 +32,7 @@ fetch(`${apiUrl}/${id}`)
   .then(response => response.json())
   .then(updatedObject => {
     console.log('Campo atualizado com sucesso:', updatedObject);
+    alert("Status da tarefa atualziado para concluido")
   })
   .catch(error => {
     console.error('Erro ao atualizar o campo:', error);
@@ -61,69 +62,64 @@ function ListarTarefas() {
     // Popula a tabela com os registros do banco de dados
     for (let index = 0; index < db.length; index++) {
         const tarefa = db[index];
-        let cor;
-        //Pegar as Datas salvas no DB e convertar para o padrão BR
-        let data = new Date(tarefa.Data);
-        let dia = (data.getDate() + 1).toString().padStart(2, '0'); // Adicionar zero à esquerda, se necessário
-        let mes = (data.getMonth() + 1).toString().padStart(2, '0'); // Lembre-se que os meses em JavaScript são baseados em zero
-        let ano = data.getFullYear();
-        // Formatar a data no formato "DD/MM/AAAA"
-        const dataFormatada = `${dia}/${mes}/${ano}`;
-        if (tarefa.Prioridade == "Alta") {
-            cor = 'Red';
-        } if (tarefa.Prioridade == "Média") {
-            cor = 'Orange'
-        } if (tarefa.Prioridade == "Baixa") {
-            cor = 'Yellow'
+        if (tarefa.Status == "Aberta"){
+            let cor;
+            //Pegar as Datas salvas no DB e convertar para o padrão BR
+            let data = new Date(tarefa.Data);
+            let dia = (data.getDate() + 1).toString().padStart(2, '0'); // Adicionar zero à esquerda, se necessário
+            let mes = (data.getMonth() + 1).toString().padStart(2, '0'); // Lembre-se que os meses em JavaScript são baseados em zero
+            let ano = data.getFullYear();
+            // Formatar a data no formato "DD/MM/AAAA"
+            const dataFormatada = `${dia}/${mes}/${ano}`;
+            // Inclui o contato na tabela    
+            Tarefas_vertical.innerHTML += `
+                    <div class="modal fade" id="exampleModal-${tarefa.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">${tarefa.nome}</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="Modal_conteudo">
+                                        <p><b>Data:</b> ${dataFormatada}</p>
+                                        <p><b>Horário:</b> ${tarefa.Hora_inicial} às ${tarefa.Hora_final}</p>
+                                    </div>
+                                    <div class="Modal_conteudo">
+                                        <p><b>Recorrência:</b> ${tarefa.Recorrência}</p>
+                                        <p><b>Prioridade:</b> ${tarefa.Prioridade} </p>
+                                    </div>
+                                    <div class="Modal-Comentario">
+                                        <p><b>Comentarios:</b></p>
+                                        <textarea disabled>${tarefa.Comentarios}</textarea>
+                                    </div>
+                                    <div class="modal-footer" style"background-color: rgb(33, 115, 238);">
+                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Fechar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                                  
+                    <div class="tarefas" id="${tarefa.id}">
+                        <div class="conteudo">
+                            <H3>${tarefa.nome}</H3>
+                            <p>${dataFormatada}, ${tarefa.Hora_inicial} às ${tarefa.Hora_final}</p>
+                        </div>
+                        <div class="icone">
+                            <a href="#"><img src="assets/imgs/edicao.png" alt="icone de edição de tarefas"></a>
+                            <a href="#"><img src="assets/imgs/lixeira-de-reciclagem.png" alt="icone de exclusãod e tarefas"></a>
+                            <button class="btn_concluir" data-bs-toggle="modal" data-bs-target="#exampleModal-${tarefa.id}-concluir" id="botao_Modal_${tarefa.id}"></button>
+                            <div>
+                                <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#exampleModal-${tarefa.id}" id="botao_Modal">
+                                    Veja Mais
+                                </button>
+                            </div>
+                        </div>                   
+                    </div>
+                    `
         }
-
-        // Inclui o contato na tabela    
-        Tarefas_vertical.innerHTML += `
-                <div class="modal fade" id="exampleModal-${tarefa.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">${tarefa.nome}</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="Modal_conteudo">
-                                    <p><b>Data:</b> ${dataFormatada}</p>
-                                    <p><b>Horário:</b> ${tarefa.Hora_inicial} às ${tarefa.Hora_final}</p>
-                                </div>
-                                <div class="Modal_conteudo">
-                                    <p><b>Recorrência:</b> ${tarefa.Recorrência}</p>
-                                    <p><b>Prioridade:</b> ${tarefa.Prioridade} </p>
-                                </div>
-                                <div class="Modal-Comentario">
-                                    <p><b>Comentarios:</b></p>
-                                    <textarea disabled>${tarefa.Comentarios}</textarea>
-                                </div>
-                                <div class="modal-footer" style"background-color: rgb(33, 115, 238);">
-                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Fechar</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>                                  
-                <div class="tarefas" id="${tarefa.id}">
-                    <div class="conteudo">
-                        <H3>${tarefa.nome}</H3>
-                        <p>${dataFormatada}, ${tarefa.Hora_inicial} às ${tarefa.Hora_final}</p>
-                    </div>
-                    <div class="icone">
-                        <a href="#"><img src="assets/imgs/edicao.png" alt="icone de edição de tarefas"></a>
-                        <a href="#"><img src="assets/imgs/lixeira-de-reciclagem.png" alt="icone de exclusãod e tarefas"></a>
-                        <input type="checkbox" class="concluir"></input>
-                        <div>
-                            <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#exampleModal-${tarefa.id}" id="botao_Modal">
-                                Veja Mais
-                            </button>
-                        </div>
-                    </div>                   
-                </div>
-                `
     }
+
 }
 
 var db2 = []
@@ -151,60 +147,61 @@ function CardsTarefa(){
     //Loop de geração dos cards
     for (let index = 0; index < db2.length; index++){
         const tarefa = db2[index];
-        let cor;
-        //Pegar as Datas salvas no DB e convertar para o padrão BR
-        let data = new Date(tarefa.Data);
-        let dia = (data.getDate() + 1).toString().padStart(2, '0'); // Adicionar zero à esquerda, se necessário
-        let mes = (data.getMonth() + 1).toString().padStart(2, '0'); // Lembre-se que os meses em JavaScript são baseados em zero
-        let ano = data.getFullYear();
-        // Formatar a data no formato "DD/MM/AAAA"
-        const dataFormatada = `${dia}/${mes}/${ano}`;
-        if (tarefa.Prioridade == "Alta") {
-            cor = '#E0473F';
-        }if (tarefa.Prioridade == "Média") {
-            cor = '#F2A516'
-        }if (tarefa.Prioridade == "Baixa") {
-            cor = '#F0DC4B'
-        }
+        if (tarefa.Status == "Aberta"){
+            let cor;
+            //Pegar as Datas salvas no DB e convertar para o padrão BR
+            let data = new Date(tarefa.Data);
+            let dia = (data.getDate() + 1).toString().padStart(2, '0'); // Adicionar zero à esquerda, se necessário
+            let mes = (data.getMonth() + 1).toString().padStart(2, '0'); // Lembre-se que os meses em JavaScript são baseados em zero
+            let ano = data.getFullYear();
+            // Formatar a data no formato "DD/MM/AAAA"
+            const dataFormatada = `${dia}/${mes}/${ano}`;
+            if (tarefa.Prioridade == "Alta") {
+                cor = '#E0473F';
+            }if (tarefa.Prioridade == "Média") {
+                cor = '#F2A516'
+            }if (tarefa.Prioridade == "Baixa") {
+                cor = '#F0DC4B'
+            }
 
-        Cards_Tarefas.innerHTML += `
-        <div class="card-tarefa" style="Background-color:${cor}">                           
-            <div class="card-corpo">
-                <div class="card-header">
-                    <h5 class="card-titulo">${tarefa.nome}</h5>
-                    <button class="btn_concluir" data-bs-toggle="modal" data-bs-target="#exampleModal-${tarefa.id}-concluir" id="botao_Modal_${tarefa.id}"></button>
+            Cards_Tarefas.innerHTML += `
+            <div class="card-tarefa" style="Background-color:${cor}">                           
+                <div class="card-corpo">
+                    <div class="card-header">
+                        <h5 class="card-titulo">${tarefa.nome}</h5>
+                        <button class="btn_concluir" data-bs-toggle="modal" data-bs-target="#exampleModal-${tarefa.id}-concluir" id="botao_Modal_${tarefa.id}"></button>
+                    </div>
+                    <p class="card-texto">${dataFormatada}<br>${tarefa.Hora_inicial} às ${tarefa.Hora_final}</p>
                 </div>
-                <p class="card-texto">${dataFormatada}<br>${tarefa.Hora_inicial} às ${tarefa.Hora_final}</p>
-            </div>
-        </div>`;
+            </div>`;
+        }
 
     }
     /*Looping para gerar o modal para concluir tarefas dos cards*/
     for(let index = 0; index < db2.length; index++){
         const tarefa_box = db2[index]
-        Cards_Tarefas.innerHTML += `
-        <div class="modal fade" id="exampleModal-${tarefa_box.id}-concluir" tabindex="1000" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">${tarefa_box.nome}</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="Modal_conteudo">
-                            <p><b>Deseja mesmo concluir esta tarefa?</b> </p>
-                            <p id="modal_concluir_${tarefa_box.id}" hidden>${tarefa_box.id}</p>
+        if (tarefa_box.Status == "Aberta"){
+            Cards_Tarefas.innerHTML += `
+            <div class="modal fade" id="exampleModal-${tarefa_box.id}-concluir" tabindex="1000" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">${tarefa_box.nome}</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-footer" style"background-color: rgb(33, 115, 238);">
-                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Fechar</button>
-                            <button type="button" class="btn_update_status" id="btn_${tarefa_box.id}" >Concluir</button>
+                        <div class="modal-body">
+                            <div class="Modal_conteudo">
+                                <p><b>Deseja mesmo concluir esta tarefa?</b> </p>
+                            </div>
+                            <div class="modal-footer" style"background-color: rgb(33, 115, 238);">
+                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Fechar</button>
+                                <button type="button" class="btn_update_status" id="btn_${tarefa_box.id}" >Concluir</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div> ` 
-        //let btnUpdate = {}                                
-        //btnUpdate[index] = document.getElementById(`botao_${tarefa_box.id}`);
+            </div> `
+        } 
     }
 
     concluir();
@@ -218,18 +215,17 @@ function concluir(){
     for(let btn of btnUpdate){
         btn.addEventListener ('click', function () {
             // Obtem os valores dos campos do formulário
-            alert("teste")
-            let Id = "3";
+            let btn_Id = btn.getAttribute("id");
+            console.log(btn_Id)
+            let Id_tarefa = btn_Id.match(/\d+/g);
             // Cria um objeto com os dados do contato
             let Tarefa = 'Concluida'
                     
             // Altera a Tarefa no banco de dados
-            updateTarefas(parseInt(Id), Tarefa);
+            updateTarefas(parseInt(Id_tarefa), Tarefa);
         }); 
     } 
 }
-//});
-//let campoId = document.getElementsById("modal_concluir_3");
 
 
 
