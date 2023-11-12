@@ -222,7 +222,7 @@ function concluir(){
             let Tarefa = 'Concluida'
                     
             // Altera a Tarefa no banco de dados
-            updateTarefas(parseInt(Id_tarefa), Tarefa);
+            updateTarefas(parseInt(Id_tarefa), Tarefa, CardsTarefa, ListarTarefas);
         }); 
     } 
 }
