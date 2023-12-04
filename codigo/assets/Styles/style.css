@@ -1,15 +1,50 @@
-body{
-    margin: 0px;
-    padding: 0px;
+#body{
+  margin: 0px;
+  padding: 0px;
+  background-color: #00a2ff;
+}
+
+header{
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(33, 115, 238);
+}
+
+#logo{
+  max-width: 150px;
+  max-height: 80px;
+  padding: 10px;
+}
+
+header ul{
+  list-style: none;
+  display: flex;
+}
+
+header ul li{
+  margin: 20px 20px 0px;
+  color: white;
+  font-size: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+header ul li a{
+  text-decoration: none;
+  color: white;
+}
+
+header ul li a:hover{
+  color:black;
 }
 
 #filtros{
-    display: flex;
+    display: grid;
+    grid-template-columns: minmax(300px,0.85fr) minmax(200px,2fr);
 }
 
 #Lista_tarefas{
-    width: 25%;
-    height: 700px;
+    width: 90%;
+    height: 90%;
     border: 10px;
     border-color: black;
     background-color: lightgrey;
@@ -17,6 +52,8 @@ body{
     border-radius: 20px;
     overflow: hidden;
     background-color: rgb(33, 115, 238);
+    grid-row-start: 1;
+    grid-row-end:3;
 }
 
 .titulo{
@@ -98,13 +135,28 @@ body{
     border-radius: 3px;
 }
 
+.btn_update_status{
+    color: white;
+    background-color: #0d6efd;
+    padding: 6px 12px;
+    border-style: none;
+    border-radius: 0.375rem;
+}
+
+.btn_update_status:hover{
+    background-color: #0b5ed7;
+    
+}
+
 #Barra_tarefa{
     background-color: rgb(33, 115, 238);
-    width: 60%;
+    width: 90%;
+    margin:30px auto;
     height: 250px;
-    margin: 30px;
     border: 10px;
     border-radius: 20px;
+    grid-row-start: 1;
+    
 }
 
 #Barra_tarefa h3{
@@ -245,4 +297,206 @@ body{
 
   #Tarefas_vertical::-webkit-scrollbar-thumb:hover{
     background-color: #38d0f2a8;
+  }
+
+
+/*---------------------------------------------------------------------*/
+
+#calendario{
+    grid-row-start: 2;
+    grid-column: 2 ;
+}
+
+.calendar {
+  width: 90%; /* pra ajustar a largura*/
+  margin: auto;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 20px;
+  }
+
+  .weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    padding: 10px;
+    font-weight: bold;
+    color: rgb(33, 115, 238);
+  }
+  
+  .weekday {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    border-radius: 10px;
+    background-color: #f2f2f2;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(33, 115, 238);
+    color: white;
+    padding: 10px;
+  }
+  
+  .days {
+    display: grid;
+    grid-template-columns: repeat(7, 70px);
+    gap: 10px;
+    padding: 20px;
+  }
+  
+  .day {
+    width: 70px;
+    height: 70px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    position: relative;
+    cursor: pointer;
+    flex-direction: column;
+  }
+  
+  .day:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .add-task-button {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    background-color: rgb(33, 115, 238);
+    color: white;
+    border-radius: 50%;
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .task-modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  
+  .task-modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 10px;
+    max-width: 300px;
+    text-align: center;
+    position: relative;
+  }
+  
+  .close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .task {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    margin: 5px;
+  }
+  
+
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(33, 115, 238);
+    color: white;
+    padding: 10px;
+  }
+  
+  .days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    padding: 20px;
+  }
+  
+  .day {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .add-task-button {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    background-color: rgb(33, 115, 238);
+    color: white;
+    border-radius: 50%;
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .task-modal,
+  .task-details-modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  
+  .task-modal-content,
+  .task-details-modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 10px;
+    max-width: 300px;
+    text-align: center;
+    position: relative;
+  }
+  
+  .close,
+  .close-details {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 24px;
+    cursor: pointer;
   }

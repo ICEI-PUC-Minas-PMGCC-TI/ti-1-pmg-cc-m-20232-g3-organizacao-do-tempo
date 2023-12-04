@@ -32,10 +32,11 @@ fetch(`${apiUrl}/${id}`)
   .then(response => response.json())
   .then(updatedObject => {
     console.log('Campo atualizado com sucesso:', updatedObject);
-    alert("Status da tarefa atualziado para concluido")
+    alert("Status da tarefa atualziado para concluido");
+    location.reload();
   })
   .catch(error => {
-    console.error('Erro ao atualizar o campo:', error);
+    console.error('Erro ao concluir a tarefa:', error);
   });
 }
 
@@ -222,7 +223,7 @@ function concluir(){
             let Tarefa = 'Concluida'
                     
             // Altera a Tarefa no banco de dados
-            updateTarefas(parseInt(Id_tarefa), Tarefa, CardsTarefa, ListarTarefas);
+            updateTarefas(parseInt(Id_tarefa), Tarefa);
         }); 
     } 
 }
