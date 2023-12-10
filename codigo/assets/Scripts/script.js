@@ -1,3 +1,4 @@
+
 let year = new Date().getFullYear();
 let month = new Date().getMonth();
 
@@ -46,9 +47,9 @@ document.getElementById('next').addEventListener('click', () => {
 
 async function loadTasksFromJSON() {
   try {
-    const response = await fetch('https://jsonserver.andre-luizlui75.repl.co/Tarefas');
+    const response = await fetch('https://jsonserver-tiaw.1499144.repl.co/tarefas?id_user='+id);
     const data = await response.json();
-    const openTasks = data.filter(task => task.Status === 'Aberta');
+    const openTasks = data.filter(task => task.status === 'aberto');
     return openTasks;
   } catch (error) {
     console.error('Erro ao carregar tarefas:', error);
@@ -88,11 +89,11 @@ async function generateCalendar() {
     dayElement.classList.add('day');
     dayElement.textContent = day;
 
-    const tasksForDate = tasks.filter(task => task.Data === date.toISOString().split('T')[0]);
+    const tasksForDate = tasks.filter(task => task.date.split('T')[0] === date.toISOString().split('T')[0]);
     tasksForDate.forEach(task => {
       const taskElement = document.createElement('div');
       taskElement.classList.add('task');
-      taskElement.style.backgroundColor = getPriorityColor(task.Prioridade);
+      taskElement.style.backgroundColor = getPriorityColor(task.priority);
       dayElement.appendChild(taskElement);
       taskElement.addEventListener('click', () => {
         showTaskDetails(task);
@@ -120,7 +121,7 @@ function getPriorityColor(priority) {
   }
 }
 
-function addTask() {
+/*function addTask() {
   const taskName = document.getElementById('taskName').value;
   const priority = document.getElementById('priority').value || 'Baixo';
   const taskStartDate = document.getElementById('taskStartDate').value;
@@ -142,7 +143,7 @@ function addTask() {
   } else {
     alert('Por favor, preencha todos os campos.');
   }
-}
+}*/
 
 function showTaskDetails(task) {
   const taskDetailsTitle = document.getElementById('taskDetailsTitle');
@@ -150,8 +151,8 @@ function showTaskDetails(task) {
   const taskDetailsEndDate = document.getElementById('taskDetailsEndDate');
 
   taskDetailsTitle.textContent = task.nome;
-  taskDetailsStartDate.textContent = task.Data;
-  taskDetailsEndDate.textContent = task.Data; 
+  taskDetailsStartDate.textContent = task.date;
+  taskDetailsEndDate.textContent = task.date; 
 
   document.querySelector('.task-details-modal').style.display = 'block';
 }

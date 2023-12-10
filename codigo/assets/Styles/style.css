@@ -81,6 +81,10 @@ header ul li a:hover{
     height: 30px;
 }
 
+.titulo a:hover{
+  cursor:pointer;
+}
+
 .titulo a img{
     width: 30px;
     height: 30px;
