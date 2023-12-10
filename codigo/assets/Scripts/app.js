@@ -1,5 +1,5 @@
 var params = new URLSearchParams(location.search)
-var id = params.get("id")
+export const id = params.get("id")
 console.log(id);
 const apiUrl = 'https://jsonserver-tiaw.1499144.repl.co/tarefas?id_user='+id;
 
@@ -52,7 +52,7 @@ readTarefas(dados => {
 });
 
 // função para listar as tarefas por ordem de data e horario  
-function ListarTarefas() {
+export function ListarTarefas() {
     db.sort((a, b) => {
         const DataA = new Date(`${a.date}`);
         const DataB = new Date(`${b.date}`);
@@ -78,11 +78,11 @@ function ListarTarefas() {
             const dataFormatada = `${dia}/${mes}/${ano}`;
 
             //Verificar a recorrência
-            if (tarefa.priority == "3") {
+            if (tarefa.priority == "1") {
                 prioridade = 'Alta'
             }if (tarefa.priority == "2") {
                 prioridade = 'Média'
-            }if (tarefa.priority == "1") {
+            }if (tarefa.priority == "3") {
                 prioridade = 'Baixa'
             }
 
@@ -127,8 +127,14 @@ function ListarTarefas() {
                             <p>${dataFormatada}, ${hora}</p>
                         </div>
                         <div class="icone">
-                            <a href="#"><img src="assets/imgs/edicao.png" alt="icone de edição de tarefas"></a>
-                            <a href="#"><img src="assets/imgs/lixeira-de-reciclagem.png" alt="icone de exclusãod e tarefas"></a>
+                        <div class="col-4 d-flex align-items-center">
+                            <div class="btn btnActions btn-sm edit-btn" >
+                                <img class="iconeSvg" id="editzinho" data-type-btn="exclude" data-id-tarefa="${tarefa.id}" data-bs-toggle="modal" data-bs-target="#addModal" src="../assets/edit-fotinha.svg" >
+                            </div>
+                            <div class="btn btnActions btn-sm exclude-btn" >
+                                <img class="iconeSvg" data-type-btn="edit" data-id-tarefa="${tarefa.id}" src="../assets/trash-fotinha.svg">
+                            </div>
+                        </div>
                             <button class="btn_concluir" data-bs-toggle="modal" data-bs-target="#exampleModal-${tarefa.id}-concluir" id="botao_Modal_${tarefa.id}"></button>
                             <div>
                                 <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#exampleModal-${tarefa.id}" id="botao_Modal">
@@ -178,11 +184,11 @@ function CardsTarefa(){
             let hora = tarefa.date.split('T')[1];
             // Formatar a data no formato "DD/MM/AAAA"
             const dataFormatada = `${dia}/${mes}/${ano}`;
-            if (tarefa.priority == "3") {
+            if (tarefa.priority == "1") {
                 cor = '#E0473F';
             }if (tarefa.priority == "2") {
                 cor = '#F2A516'
-            }if (tarefa.priority == "1") {
+            }if (tarefa.priority == "3") {
                 cor = '#F0DC4B'
             }
 

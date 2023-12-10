@@ -1,4 +1,4 @@
-
+import {id} from './app.js'
 let year = new Date().getFullYear();
 let month = new Date().getMonth();
 
@@ -111,11 +111,11 @@ function getTasksForDate(date) {
 
 function getPriorityColor(priority) {
   switch (priority) {
-    case 'Alta':
+    case '1':
       return '#E0473F';
-    case 'Média':
+    case '2':
       return '#F2A516';
-    case 'Baixa':
+    case '3':
     default:
       return '#F0DC4B';
   }
