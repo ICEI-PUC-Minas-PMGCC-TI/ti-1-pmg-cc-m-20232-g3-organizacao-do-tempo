@@ -37,8 +37,8 @@
             window.location.href = 'index.html?id=' + usuarioCorrente.id;
         }
         
-        function IdUser() {
-            window.location.href = 'tarefasConcluidas.html?id=' + usuarioCorrente.id;
+        function IdUser(page) {
+            window.location.href = `${page}?id=` + usuarioCorrente.id;
         }
         // Associa ao evento de carga da página a função para verificar se o usuário está logado
         window.addEventListener('load', initPage);
@@ -56,7 +56,8 @@
             <label for="menu-toggle" class="menu-icon">&#9776;</label>
             <ul class="menu">
                 <li><a href="./metodosEstudo.html" >Metodos de Estudos</a></li>
-                <li><a href="#">Minha Conta</a></li>
+                <li><a href="./minhConta.html">Minha Conta</a></li>
+                <li><a href="#" onclick="IdUser('Desempenho.html')">Desempenho</a></li>
                 <li><a href="#" id="btn_logout">Sair</a></li>
             </ul>
         </nav>

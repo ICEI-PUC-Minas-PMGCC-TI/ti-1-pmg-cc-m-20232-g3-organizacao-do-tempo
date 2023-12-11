@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   generateCalendar();
 });
 
-document.querySelector('.add-task-button').addEventListener('click', () => {
+/*document.querySelector('.add-task-button').addEventListener('click', () => {
   const today = new Date();
   const currentYear = today.getFullYear();
   const currentMonth = today.getMonth() + 1;
@@ -17,7 +17,7 @@ document.querySelector('.add-task-button').addEventListener('click', () => {
   document.getElementById('taskStartDate').value = todayDate;
   document.getElementById('taskEndDate').value = todayDate;
   document.querySelector('.task-modal').style.display = 'block';
-});
+});*/
 
 document.querySelector('.close').addEventListener('click', () => {
   document.querySelector('.task-modal').style.display = 'none';

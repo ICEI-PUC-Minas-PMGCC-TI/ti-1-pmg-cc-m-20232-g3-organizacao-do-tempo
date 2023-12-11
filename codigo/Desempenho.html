@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gráfico - Tarefas Concluídas</title>
+    <link rel="stylesheet" href="./assets/Styles/style.css">
+    <link rel="stylesheet" href="./assets/Styles/style_des.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans&family=Poppins&display=swap" rel="stylesheet">
+    <script src="assets/Scripts/login.js"></script>
+    <script>
+        // Verifica se o usuário já esta logado e se negativo, redireciona para tela de login        
+        if (!usuarioCorrente.login) {
+            window.location.href = LOGIN_URL;
+            console.log('não armazwenou')
+        }
+
+        function initPage() {
+            document.getElementById('btn_logout').addEventListener('click', logoutUser);
+        }
+
+        function returnHomePage() {
+            window.location.href = 'index.html?id=' + usuarioCorrente.id;
+        }
+
+        function IdUser(page) {
+            window.location.href = `${page}?id=` + usuarioCorrente.id;
+        }
+        // Associa ao evento de carga da página a função para verificar se o usuário está logado
+        window.addEventListener('load', initPage);
+    </script>
+</head>
+
+<body>
+  <header class="header">
+    <!-- <a onclick="returnHomePage()"><img src="assets/imgs/CLOCK - PNG.png" id="logo"></a>
+    <ul>
+        <li><a href="./metodosEstudo.html">Metodos de Estudos</a></li>
+        <li><a href="#">Minha Conta</a></li>
+        <li><a href="#" id="btn_logout">Sair</a></li>
+    </ul> -->
+    <nav class="nav">
+        <div class="logo">
+            <a href="#" onclick="returnHomePage()">
+                <img src="assets//imgs/CLOCK - PNG.png" class="logo-icon" />
+            </a>
+        </div>
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="menu-icon">&#9776;</label>
+        <ul class="menu">
+            <li><a href="./metodosEstudo.html">Metodos de Estudos</a></li>
+            <li><a href="./minhConta.html">Minha Conta</a></li>
+            <li><a href="#">Desempenho</a></li>
+            <li><a href="#" id="btn_logout">Sair</a></li>
+        </ul>
+    </nav>
+</header>
+  <div class="central-container">
+   <div class="container_graph">
+        <h1>Visão Geral de Desempenho</h1>
+        <div class="piechart">
+            <canvas id="pieChart"></canvas>
+        </div>
+   </div>
+  </div>
+</body>
+<script src="./assets/Scripts/desempenho.js" type="module"></script>
+
+</html>

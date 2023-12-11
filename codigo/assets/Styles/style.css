@@ -1173,3 +1173,65 @@ body {
     text-align: start;
   }
 }
+
+/*Estilização página de minha conta*/
+
+.content-all-my-profile {
+  width: 100%;
+  height: calc(100vh - 85px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title-meu-perfil {
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.container-info-meu-perfil {
+  border: 1px solid #618ab6;
+  border-radius: 10px;
+  box-shadow: 3px 3px 10px #618ab66f;
+  padding: 3rem 2rem;
+  width: 50%;
+  min-width: 380px;
+}
+
+.nome-meu-perfil {
+  padding: 1rem;
+  margin: 1.7rem;
+  font-size: 1.5rem;
+  border: 1px solid #618ab6;
+  border-radius: 10px;
+  box-shadow: 3px 3px 10px #618ab66f;
+  transition: all .4s;
+}
+
+.nome-meu-perfil:hover, .login-meu-perfil:hover, .email-meu-perfil:hover{
+    transform: scale(1.03);
+}
+
+.login-meu-perfil {
+  padding: 1rem;
+  margin: 1.7rem;
+  font-size: 1.5rem;
+  border: 1px solid #618ab6;
+  border-radius: 10px;
+  box-shadow: 3px 3px 10px #618ab66f;
+  transition: all .4s;
+}
+
+.email-meu-perfil {
+  padding: 1rem;
+  margin: 1.7rem;
+  font-size: 1.5rem;
+  border: 1px solid #618ab6;
+  border-radius: 10px;
+  box-shadow: 3px 3px 10px #618ab66f;
+  transition: all .4s;
+}
+
+/*Estilização página de desempenho*/
+
