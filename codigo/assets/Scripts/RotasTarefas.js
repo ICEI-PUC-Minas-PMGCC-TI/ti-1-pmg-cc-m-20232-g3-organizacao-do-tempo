@@ -36,13 +36,16 @@ export default {
         })
 
         await axios.patch(`${base_url}/nextIdTarefas/`, { value: nextId++ })
-
+        
+        location.reload();
         return result
     },
     change: async (id, data) => {
         await axios.patch(`${base_url}/tarefas/${id}`, data)
+        location.reload();
     },
     delete: async (id) => {
         await axios.delete(`${base_url}/tarefas/${id}`)
+        location.reload();
     }
 }

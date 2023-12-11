@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listagem de Tarefas Concluídas</title>
+    <link rel="stylesheet" href="./assets/Styles/style.css">
+    <script src="assets/Scripts/login.js"></script>
+    <script>
+        // Verifica se o usuário já esta logado e se negativo, redireciona para tela de login        
+        if (!usuarioCorrente.login) {
+            window.location.href = LOGIN_URL;
+            console.log('não armazwenou')
+        }
+
+        function initPage() {
+            document.getElementById('btn_logout').addEventListener('click', logoutUser);
+        }
+
+        function returnHomePage() {
+            window.location.href = 'index.html?id=' + usuarioCorrente.id;
+        }
+
+        function IdUser() {
+            window.location.href = 'tarefasConcluidas.html?id=' + usuarioCorrente.id;
+        }
+        // Associa ao evento de carga da página a função para verificar se o usuário está logado
+        window.addEventListener('load', initPage);
+    </script>
+</head>
+<body class="body-tarefa-concluida">
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">
+                <a href="#" onclick="returnHomePage()">
+                    <img src="assets//imgs/CLOCK - PNG.png" class="logo-icon" />
+                </a>
+            </div>
+            <input type="checkbox" id="menu-toggle">
+            <label for="menu-toggle" class="menu-icon">&#9776;</label>
+            <ul class="menu">
+                <li><a href="./metodosEstudo.html">Metodos de Estudos</a></li>
+                <li><a href="#">Minha Conta</a></li>
+                <li><a href="#" id="btn_logout">Sair</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container-tarefa-concluida">
+        <h1>Tarefas Concluídas</h1>
+        <div id="tarefasConcluidas" class="tarefas-container"></div>
+    </div>
+
+    <div id="modal-tarefaConcluida" class="modalConcluida">
+        <div class="modal-content-concluida">
+            <span class="modal-close-concluida" id="modal-close-concluida">&times;</span>
+            <h2 id="modal-title-concluida"></h2>
+            <p id="modal-description-concluida"></p>
+        </div>
+    </div>
+
+    
+</body>
+<script src="assets/Scripts/app.js" type="module"></script>
+<script src="assets/Scripts/tarefaConcluida.js" type="module"></script>
+</html>

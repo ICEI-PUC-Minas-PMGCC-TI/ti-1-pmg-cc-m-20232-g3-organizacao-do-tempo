@@ -53,6 +53,7 @@ readTarefas(dados => {
 
 // função para listar as tarefas por ordem de data e horario  
 export function ListarTarefas() {
+    
     db.sort((a, b) => {
         const DataA = new Date(`${a.date}`);
         const DataB = new Date(`${b.date}`);
@@ -115,7 +116,7 @@ export function ListarTarefas() {
                                         <textarea disabled>${tarefa.comment}</textarea>
                                     </div>
                                     <div class="modal-footer" style"background-color: rgb(33, 115, 238);">
-                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Fechar</button>
+                                        <button type="button" id="btn-fechar-modal" class="btn btn-fechar-modal" data-bs-dismiss="modal" >Fechar</button>
                                     </div>
                                 </div>
                             </div>
@@ -125,19 +126,21 @@ export function ListarTarefas() {
                         <div class="conteudo">
                             <H3>${tarefa.name}</H3>
                             <p>${dataFormatada}, ${hora}</p>
+                            <div class="conclude-div">
+                                <button class="btn_concluir" data-bs-toggle="modal" data-bs-target="#exampleModal-${tarefa.id}-concluir" id="botao_Modal_${tarefa.id}"></button> Concluir
+                            </div>
                         </div>
                         <div class="icone">
-                        <div class="col-4 d-flex align-items-center">
-                            <div class="btn btnActions btn-sm edit-btn" >
-                                <img class="iconeSvg" id="editzinho" data-type-btn="exclude" data-id-tarefa="${tarefa.id}" data-bs-toggle="modal" data-bs-target="#addModal" src="../assets/edit-fotinha.svg" >
+                        <div class="d-flex">
+                            <div class="btn btnActions btn-sm edit-btn" id="btn-edit"  data-type-btn="exclude" data-id-tarefa="${tarefa.id}" data-bs-toggle="modal" data-bs-target="#addModal">
+                                Edit
                             </div>
-                            <div class="btn btnActions btn-sm exclude-btn" >
-                                <img class="iconeSvg" data-type-btn="edit" data-id-tarefa="${tarefa.id}" src="../assets/trash-fotinha.svg">
+                            <div class="btn btnActions btn-sm exclude-btn" id="btn-exclude" data-type-btn="edit" data-id-tarefa="${tarefa.id}">
+                                Excl
                             </div>
                         </div>
-                            <button class="btn_concluir" data-bs-toggle="modal" data-bs-target="#exampleModal-${tarefa.id}-concluir" id="botao_Modal_${tarefa.id}"></button>
                             <div>
-                                <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#exampleModal-${tarefa.id}" id="botao_Modal">
+                                <button type="button" class="btn btn-see-more" data-bs-toggle="modal" data-bs-target="#exampleModal-${tarefa.id}" id="botao_Modal">
                                     Veja Mais
                                 </button>
                             </div>
@@ -168,7 +171,7 @@ function CardsTarefa(){
             return DataA - DataB;
         }
 
-        return priorityA - priorityB;
+        return priorityB - priorityA;
     });
 
     //Loop de geração dos cards
@@ -193,7 +196,7 @@ function CardsTarefa(){
             }
 
             Cards_Tarefas.innerHTML += `
-            <div class="card-tarefa" style="Background-color:${cor}">                           
+            <div class="card-tarefa" style="border: 4px solid ${cor}; box-shadow: 0 0 5px ${cor};">                           
                 <div class="card-corpo">
                     <div class="card-header">
                         <h5 class="card-titulo">${tarefa.name}</h5>
@@ -222,7 +225,7 @@ function CardsTarefa(){
                                 <p><b>Deseja mesmo concluir esta tarefa?</b> </p>
                             </div>
                             <div class="modal-footer" style"background-color: rgb(33, 115, 238);">
-                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Fechar</button>
+                                <button type="button" id="btn-fechar-modal" class="btn btn-fechar-modal" data-bs-dismiss="modal">Fechar</button>
                                 <button type="button" class="btn_update_status" id="btn_${tarefa_box.id}" >Concluir</button>
                             </div>
                         </div>

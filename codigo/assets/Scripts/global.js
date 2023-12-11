@@ -73,6 +73,7 @@ export const refreshData = async () => {
     // Cria evento para abrir modal de editar tarefa
     document.querySelectorAll('.edit-btn').forEach(el => {
         el.addEventListener('click', async (ev) => {
+            console.log("printou");
             const data = (await RotasTarefa.getById(ev.target.dataset.idTarefa)).data //axios precisa de .data
 
             console.log(data);
