@@ -1,7 +1,7 @@
 var params = new URLSearchParams(location.search)
 export const id = params.get("id")
 console.log(id);
-const apiUrl = 'https://jsonserver-tiaw.1499144.repl.co/tarefas?id_user='+id;
+const apiUrl = 'https://01740bdc-10ca-4626-b0ec-eec92c4586be-00-1nijjb6moudwo.spock.replit.dev/tarefas?id_user='+id;
 
 function readTarefas(processaDados) {
     fetch(apiUrl)
@@ -17,14 +17,14 @@ function readTarefas(processaDados) {
 
 
 function updateTarefas(id, concluir) {
-fetch(`https://jsonserver-tiaw.1499144.repl.co/tarefas/${id}`)
+fetch(`https://01740bdc-10ca-4626-b0ec-eec92c4586be-00-1nijjb6moudwo.spock.replit.dev/tarefas/${id}`)
   .then(response => response.json())
   .then(data => {
     // Atualize o campo desejado
     data.status = concluir
     //const tarefaEncontrada = jsonData[0].tarefas.find(tarefa => tarefa.id === targetTaskId);
     // Enviar uma requisição PUT para atualizar o objeto no servidor
-    return fetch(`https://jsonserver-tiaw.1499144.repl.co/tarefas/${id}`, {
+    return fetch(`https://01740bdc-10ca-4626-b0ec-eec92c4586be-00-1nijjb6moudwo.spock.replit.dev/tarefas/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

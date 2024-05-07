@@ -47,7 +47,7 @@ document.getElementById('next').addEventListener('click', () => {
 
 async function loadTasksFromJSON() {
   try {
-    const response = await fetch('https://jsonserver-tiaw.1499144.repl.co/tarefas?id_user='+id);
+    const response = await fetch('https://01740bdc-10ca-4626-b0ec-eec92c4586be-00-1nijjb6moudwo.spock.replit.dev/tarefas?id_user='+id);
     const data = await response.json();
     const openTasks = data.filter(task => task.status === 'aberto');
     return openTasks;

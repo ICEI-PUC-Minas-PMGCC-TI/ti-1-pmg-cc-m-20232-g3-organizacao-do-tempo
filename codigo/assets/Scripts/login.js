@@ -4,7 +4,7 @@ const LOGIN_URL = "login.html";
 var db_usuarios = [];
 var ultimoID_cad = 0
 
-fetch('https://jsonserver-tiaw.1499144.repl.co/Usuarios')
+fetch('https://01740bdc-10ca-4626-b0ec-eec92c4586be-00-1nijjb6moudwo.spock.replit.dev/Usuarios')
     .then(response => response.json())
     .then(data => {
         db_usuarios = data;
@@ -70,7 +70,7 @@ function addUser (nome, login, senha, email) {
     
     // Inclui o novo usuario no banco de dados baseado em JSON
     try{
-        const cadastro = fetch('https://jsonserver-tiaw.1499144.repl.co/Usuarios',{
+        const cadastro = fetch('https://01740bdc-10ca-4626-b0ec-eec92c4586be-00-1nijjb6moudwo.spock.replit.dev/Usuarios',{
                 method:'POST',
                 headers: {
                     'Content-Type': 'application/json',

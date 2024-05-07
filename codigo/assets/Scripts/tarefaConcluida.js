@@ -2,7 +2,7 @@ import {id} from './app.js'
 console.log(id)
 
 document.addEventListener('DOMContentLoaded', function () {
-    fetch('https://jsonserver-tiaw--1499144.repl.co/tarefas?id_user='+id)
+    fetch('https://01740bdc-10ca-4626-b0ec-eec92c4586be-00-1nijjb6moudwo.spock.replit.dev/tarefas?id_user='+id)
         .then(response => response.json())
         .then(data => exibirTarefasConcluidas(data))
         .catch(error => console.error('Erro ao carregar dados:', error));
