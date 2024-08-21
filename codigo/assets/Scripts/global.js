@@ -1,7 +1,7 @@
 import RotasTarefa from "./RotasTarefas.js"
 import { ListarTarefas } from "./app.js"
 
-export const base_url = `https://01740bdc-10ca-4626-b0ec-eec92c4586be-00-1nijjb6moudwo.spock.replit.dev`
+export const base_url = `https://e95012ed-dab1-4485-98b3-8c15119592ba-00-37xs9qinu78ne.spock.replit.dev`
 
 export const addForm = document.querySelector('#addForm') //Formulário de criar/editar tarefas
 export const tableBody = document.querySelector('#Tarefas_vertical') //Corpo da tabela de tarefas

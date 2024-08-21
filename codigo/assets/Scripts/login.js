@@ -1,10 +1,10 @@
-
+//Variavel json server
 // Página inicial de Login
 const LOGIN_URL = "login.html";
 var db_usuarios = [];
 var ultimoID_cad = 0
 
-fetch('https://01740bdc-10ca-4626-b0ec-eec92c4586be-00-1nijjb6moudwo.spock.replit.dev/Usuarios')
+fetch(`https://e95012ed-dab1-4485-98b3-8c15119592ba-00-37xs9qinu78ne.spock.replit.dev/Usuarios`)
     .then(response => response.json())
     .then(data => {
         db_usuarios = data;
@@ -70,7 +70,7 @@ function addUser (nome, login, senha, email) {
     
     // Inclui o novo usuario no banco de dados baseado em JSON
     try{
-        const cadastro = fetch('https://01740bdc-10ca-4626-b0ec-eec92c4586be-00-1nijjb6moudwo.spock.replit.dev/Usuarios',{
+        const cadastro = fetch(`https://e95012ed-dab1-4485-98b3-8c15119592ba-00-37xs9qinu78ne.spock.replit.dev/Usuarios`,{
                 method:'POST',
                 headers: {
                     'Content-Type': 'application/json',
