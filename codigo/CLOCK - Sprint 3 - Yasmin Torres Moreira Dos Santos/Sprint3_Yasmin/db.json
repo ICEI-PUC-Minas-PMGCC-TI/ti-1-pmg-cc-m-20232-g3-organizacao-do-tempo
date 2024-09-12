@@ -1,0 +1,92 @@
+{
+    "Tarefas": [
+      {
+        "id": 1,
+        "nome": "Aula Natação",
+        "Data": "2023-10-09",
+        "Prioridade": "Média",
+        "Recorrência": "Seg à sex",
+        "Hora_inicial": "08:00",
+        "Hora_final": "09:00",
+        "Comentarios": "Lembrar de levar a toalha e o protetor solar",
+        "Status": "Aberta"
+      },
+      {
+        "id": 2,
+        "nome": "Prova de Cálculo",
+        "Data": "2023-10-24",
+        "Prioridade": "Alta",
+        "Recorrência": "",
+        "Hora_inicial": "07:00",
+        "Hora_final": "08:50",
+        "Comentarios": "Estudar muito pra não não tomar pra dentro",
+        "Status": "Aberta"
+      },
+      {
+        "id": 3,
+        "nome": "sprint 3",
+        "Data": "2023-10-22",
+        "Prioridade": "Alta",
+        "Recorrência": "",
+        "Hora_inicial": "00:00",
+        "Hora_final": "23:59",
+        "Comentarios": "",
+        "Status": "Aberta"
+      },
+      {
+        "id": 4,
+        "nome": "Volei",
+        "Data": "2023-10-25",
+        "Prioridade": "Alta",
+        "Recorrência": "Qua",
+        "Hora_inicial": "07:00",
+        "Hora_final": "08:50",
+        "Comentarios": "Lembrar de levar a toalha, roupa e chinelo pra tomar a ducha depois, além de muita disposição",
+        "Status": "Aberta"
+      },
+      {
+        "id": 5,
+        "nome": "Apresentação trabalho de IC",
+        "Data": "2023-10-24",
+        "Prioridade": "Média",
+        "Recorrência": "",
+        "Hora_inicial": "08:50",
+        "Hora_final": "10:30",
+        "Comentarios": "Estudar o texto pra não passar vergonha",
+        "Status": "Aberta"
+      },
+      {
+        "id": 6,
+        "nome": "Curso",
+        "Data": "2023-10-27",
+        "Prioridade": "Média",
+        "Recorrência": "Seg à sex",
+        "Hora_inicial": "08:00",
+        "Hora_final": "09:00",
+        "Comentarios": "Lembrar de levar a toalha",
+        "Status": "Aberta"
+      },
+      {
+        "id": 7,
+        "nome": "Festa Fantásia",
+        "Data": "2023-10-27",
+        "Prioridade": "Baixa",
+        "Recorrência": "",
+        "Hora_inicial": "16:30",
+        "Hora_final": "18:00",
+        "Comentarios": "Arrumar uma fantásia para usar",
+        "Status": "Concluida"
+      },
+      {
+        "id": 8,
+        "nome": "Reunião do desespero",
+        "Data": "2023-10-21",
+        "Prioridade": "Média",
+        "Recorrência": "Seg à sex",
+        "Hora_inicial": "21:30",
+        "Hora_final": "22:00",
+        "Comentarios": "",
+        "Status": "Aberta"
+      }
+    ]
+  }
